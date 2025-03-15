@@ -6,7 +6,7 @@ window.onload = function () {
 
 function updateDateTime() {
     const now = new Date();
-    const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
     document.getElementById('time').textContent = timeString;
 }
 

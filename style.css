@@ -32,7 +32,6 @@
     background-color: #333;
     display:flex;
     align-items: center;
-    justify-content: space-between;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.5);
 }
 
@@ -54,7 +53,8 @@
 }
 
 .time {
-    margin-left:auto;
+    margin-left: auto;
+    margin-right: 10px;
 }
 
 #loginModal {
