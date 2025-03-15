@@ -4,6 +4,15 @@ window.onload = function () {
     modal.style.display = "block";
 }
 
+function updateDateTime() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    document.getElementById('time').textContent = timeString;
+}
+
+setInterval(updateDateTime, 1000);
+updateDateTime();
+
 document.getElementById("loginForm").onsubmit = function (event) {
     event.preventDefault();
     var username = document.getElementById("username").value;
