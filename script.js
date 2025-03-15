@@ -1,4 +1,21 @@
 var modal = document.getElementById("loginModal");
+var browserModal = document.getElementById("browserModal");
+var openBrowser = document.getElementById("openBrowser");
+var closeBrowser = document.getElementById("closeBrowser");
+
+openBrowser.onclick = function () {
+    browserModal.style.display = "block";
+}
+
+closeBrowser.onclick = function () {
+    browserModal.style.display = "none";
+}
+
+window.onclick = function (event) {
+    if (event.target == browserModal) {
+        browserModal.style.display = "none";
+    }
+}
 
 window.onload = function () {
     modal.style.display = "block";
@@ -27,3 +44,4 @@ document.getElementById("loginForm").onsubmit = function (event) {
         alert("Invalid username or password.");
     }
 }
+/* JS for browser */

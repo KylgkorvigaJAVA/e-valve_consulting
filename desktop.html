@@ -10,10 +10,10 @@
 <body class="d-flex justify-content-center align-items-center vh-100">
 
     <img src="img/note.png" class="note" alt="note">
-    <img src="img/icons/computer.png" id="computerIcon" class="icon" alt="Computer Icon">
-    <img src="img/icons/folder.png" id="folderIcon" class="icon" alt="Folder Icon">
-    <a><img src="img/icons/browser.png" id="browserIcon" class="icon" alt="Browser Icon"></a>
-    <img src="img/icons/bin.png" id="recycleBinIcon" class="icon" alt="Recycle Bin Icon">
+    <img src="img/icons/computer.png" id="openComputer" class="icon" alt="Computer Icon">
+    <img src="img/icons/folder.png" id="openFolder" class="icon" alt="Folder Icon">
+    <img src="img/icons/browser.png" id="openBrowser" class="icon" alt="Browser Icon">
+    <img src="img/icons/bin.png" id="openBin" class="icon" alt="Recycle Bin Icon">
 
     <div class="taskbar">
         <div class="taskbar-item start">
@@ -27,6 +27,18 @@
         </div>
         <div class="taskbar-item time">
             <div id="time" class="text-white"></div>
+        </div>
+    </div>
+
+    <div id="browserModal" class="modal-window">
+        <div class="modal-content-window">
+            <div class="modal-header-window">
+                <span class="modal-title-window">Browser</span>
+                <button class="close-window" id="closeBrowser">&times;</button>
+            </div>
+            <div class="modal-body-window">
+                <p>This is a browser window.</p>
+            </div>
         </div>
     </div>
 
