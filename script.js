@@ -13,7 +13,6 @@ document.getElementById("loginForm").onsubmit = function (event) {
     var correctPassword = "qwerty123";
 
     if (username === correctUsername && password === correctPassword) {
-        alert("Login successful!");
         window.location.href = "desktop.html";
     } else {
         alert("Invalid username or password.");

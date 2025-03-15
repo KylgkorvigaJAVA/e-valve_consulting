@@ -1,12 +1,10 @@
-.html, body {
-    background: #3965d7;
+.html,body {
     font-family: 'Roboto', sans-serif;
-    background-image: url(img/note.png);
-    background-position: top right;
-    background-repeat: no-repeat;
-    background-size: 300px;
-    background-position-y: 20px;
+    background: #54609c;
+    background-image:url(img/note.png);
     background-position-x: 98%;
+    background-position-y: 20px;
+    background-repeat: no-repeat;
 }
 
 .modal {
@@ -39,6 +37,50 @@
     position: absolute;
     width: 50px;
     height: 50px;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    z-index: 0;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.modal-content button {
+    padding: 10px;
+    background-color: #3965d7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal-content button:hover {
+    background-color: #2c4fa1;
 }
 
 #computerIcon {
