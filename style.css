@@ -62,6 +62,10 @@
     z-index: 1;
 }
 
+.modal-dialog {
+    top: 25%;
+}
+
 #computerIcon {
     top: 20px;
     left: 20px;
