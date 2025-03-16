@@ -1,5 +1,9 @@
 var modal = document.getElementById("loginModal");
 
+window.onload = function () {
+    modal.style.display = "block";
+}
+
 document.getElementById("loginForm").onsubmit = function (event) {
     event.preventDefault();
     var username = document.getElementById("username").value;

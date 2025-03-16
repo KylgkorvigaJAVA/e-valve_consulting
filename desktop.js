@@ -16,10 +16,6 @@ window.onclick = function (event) {
     }
 }
 
-window.onload = function () {
-    modal.style.display = "block";
-}
-
 function updateDateTime() {
     const now = new Date();
     const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
