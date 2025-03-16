@@ -16,7 +16,7 @@ document.getElementById("loginForm").onsubmit = function (event) {
         window.location.href = "desktop.html";
     } else {
         var loginError = document.getElementById("loginError");
-        loginError.textContent = "Invalid username or password.";
+        loginError.textContent = "Vale kasutaja või parool!";
         loginError.style.display = "block";
     }
 }
