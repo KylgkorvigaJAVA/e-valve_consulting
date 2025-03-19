@@ -35,8 +35,25 @@ cards.forEach(function (card) {
         var clientImage = card.getAttribute("data-image");
         var clientDescription = card.getAttribute("data-description");
         var clientProblem = card.getAttribute("data-problem");
-        var clientOptions = card.getAttribute("data-options").split('|');
+        var optionRight = card.getAttribute("data-option-right");
+        var optionWrong1 = card.getAttribute("data-option-wrong1");
+        var optionWrong2 = card.getAttribute("data-option-wrong2");
+
         document.getElementById("clientModalTitle").textContent = clientName;
+
+        var answers = [
+            { text: optionRight, isCorrect: true },
+            { text: optionWrong1, isCorrect: false },
+            { text: optionWrong2, isCorrect: false }
+        ];
+
+        shuffleArray(answers);
+
+        let correctOption = '';
+        if (answers[0].isCorrect) correctOption = 'A';
+        else if (answers[1].isCorrect) correctOption = 'B';
+        else if (answers[2].isCorrect) correctOption = 'C';
+
         document.getElementById("clientModalBody").innerHTML = `
             <div class="container">
                 <div class="row">
@@ -48,18 +65,57 @@ cards.forEach(function (card) {
                         <h3>Probleem:</h3>
                         <p>${clientProblem}</p><br>
                         <h3>Vastused:</h3>
-                        <ul class="list-group">
-                            <li class="list-group-item">${clientOptions[0]}</li>
-                            <li class="list-group-item">${clientOptions[1]}</li>
-                            <li class="list-group-item">${clientOptions[2]}</li>
+                        <ul class="list-group" id="optionsList">
+                            <li class="list-group-item" data-option="A" data-correct="${answers[0].isCorrect}">${answers[0].text}</li>
+                            <li class="list-group-item" data-option="B" data-correct="${answers[1].isCorrect}">${answers[1].text}</li>
+                            <li class="list-group-item" data-option="C" data-correct="${answers[2].isCorrect}">${answers[2].text}</li>
                         </ul>
                     </div>
                 </div>
             </div>
         `;
+
+        var isFirstAttempt = true;
+
+        var optionsList = document.querySelectorAll("#optionsList .list-group-item");
+        optionsList.forEach(function (option) {
+            option.onclick = function () {
+                if (option.getAttribute('data-correct') === "true") {
+                    option.style.backgroundColor = "#4CAF50";
+                    option.style.color = "white";
+
+                    if (isFirstAttempt) {
+                        optionsList.forEach(function (opt) {
+                            if (opt.getAttribute('data-correct') !== "true") {
+                                opt.style.backgroundColor = "#F44336";
+                                opt.style.color = "white";
+                            }
+                        });
+                    }
+
+                    optionsList.forEach(function (opt) {
+                        opt.style.pointerEvents = "none";
+                    });
+                } else {
+                    option.style.backgroundColor = "#F44336";
+                    option.style.color = "white";
+
+                    isFirstAttempt = false;
+                }
+            };
+        });
+
         clientModal.style.display = "block";
     }
 });
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
 function updateDateTime() {
     const now = new Date();
