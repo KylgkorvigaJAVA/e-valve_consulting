@@ -49,11 +49,6 @@ cards.forEach(function (card) {
 
         shuffleArray(answers);
 
-        let correctOption = '';
-        if (answers[0].isCorrect) correctOption = 'A';
-        else if (answers[1].isCorrect) correctOption = 'B';
-        else if (answers[2].isCorrect) correctOption = 'C';
-
         document.getElementById("clientModalBody").innerHTML = `
             <div class="container">
                 <div class="row">
