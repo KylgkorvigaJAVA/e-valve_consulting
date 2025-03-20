@@ -5,7 +5,7 @@ var clientModal = document.getElementById("clientModal");
 var closeClientModal = document.getElementById("closeClientModal");
 var taskbarBrowserIcon = document.getElementById("taskbar-browser-icon")
 
-var completedClients = []; // Array to track completed clients
+var completedClients = [];
 
 openBrowser.onclick = function () {
     browserModal.style.display = "block";
@@ -41,6 +41,7 @@ window.onclick = function (event) {
     }
 }
 
+/* kliendi kaart */
 var cards = document.querySelectorAll(".card");
 cards.forEach(function (card) {
     card.onclick = function () {
@@ -52,7 +53,6 @@ cards.forEach(function (card) {
         var optionWrong1 = card.getAttribute("data-option-wrong1");
         var optionWrong2 = card.getAttribute("data-option-wrong2");
         var explanationText = card.getAttribute("data-explanation");
-        var clientId = card.getAttribute("id"); // Make sure each card has a unique ID
 
         document.getElementById("clientModalTitle").textContent = clientName;
 
@@ -64,6 +64,7 @@ cards.forEach(function (card) {
 
         shuffleArray(answers);
 
+        /* kliendi modal */
         document.getElementById("clientModalBody").innerHTML = `
             <div class="container">
                 <div class="row">
@@ -87,6 +88,7 @@ cards.forEach(function (card) {
 
         var isFirstAttempt = true;
 
+        /* õige/vale vastus loogika */
         var optionsList = document.querySelectorAll("#optionsList .list-group-item");
         optionsList.forEach(function (option) {
             option.onclick = function () {
@@ -121,6 +123,7 @@ cards.forEach(function (card) {
     }
 });
 
+/* õige vastus popup */
 function showCorrectAnswerPopup(answerText, explanationText, clientCard) {
     var popup = document.createElement("div");
     popup.classList.add("popup");
@@ -138,19 +141,16 @@ function showCorrectAnswerPopup(answerText, explanationText, clientCard) {
         popup.remove();
         clientModal.style.display = "none";
         browserModal.style.display = "block";
-        
-        // Mark the client as completed
+
         markClientAsCompleted(clientCard);
     };
 }
 
+/* 'tehtud' label loogika */
 function markClientAsCompleted(clientCard) {
-    // Check if this client is already marked as completed
     if (!clientCard.classList.contains("completed")) {
-        // Mark the card as completed
         clientCard.classList.add("completed");
-        
-        // Add the "Tehtud" label if it doesn't exist
+
         if (!clientCard.querySelector(".completed-label")) {
             var completedLabel = document.createElement("div");
             completedLabel.classList.add("completed-label");
@@ -160,6 +160,7 @@ function markClientAsCompleted(clientCard) {
     }
 }
 
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -168,6 +169,7 @@ function shuffleArray(array) {
     return array;
 }
 
+/* kellaaja näitamine */
 function updateDateTime() {
     const now = new Date();
     const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });

@@ -4,6 +4,7 @@ window.onload = function () {
     modal.style.display = "block";
 }
 
+/* login modal loogika */
 document.getElementById("loginForm").onsubmit = function (event) {
     event.preventDefault();
     var username = document.getElementById("username").value;
@@ -21,6 +22,7 @@ document.getElementById("loginForm").onsubmit = function (event) {
     }
 }
 
+/* kella näitamine */
 function updateDateTime() {
     const now = new Date();
     const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
