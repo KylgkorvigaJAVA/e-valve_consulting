@@ -47,7 +47,8 @@ Iga tegelane seisab silmitsi erineva küberpettuse stsenaariumiga ja kasutaja pe
 - `index.html` - Sisselogimise ekraan
 - `desktop.html` - Peamine töölaua vaade
 - `style.css` - Stiilileht
-- `index.js` - Sisselogimise funktsionaalsus
+- `login.js` - Sisselogimise funktsionaalsus
+- `index.css` - Welcome ekraani stiilileht
 - `desktop.js` - Töölaua ja stsenaariumide funktsionaalsus
 - `img/` kaust - Taustapildid, ikoonid ja tegelaste pildid
 
