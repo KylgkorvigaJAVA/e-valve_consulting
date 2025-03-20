@@ -44,6 +44,14 @@ html,body {
     transform: scale(1.2);
 }
 
+.list-group-item {
+    cursor: pointer;
+}
+
+.list-group-item:hover {
+    background-color: #f0f0f0;
+}
+
 .taskbar {
     position: fixed;
     bottom: 0;
