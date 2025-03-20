@@ -41,6 +41,11 @@ body, html {
     text-align: center;
 }
 
+.game-info {
+    bottom:20px;
+    color: #ccc;
+}
+
 .start-button {
     padding: 15px 40px;
     font-size: 1.2rem;
