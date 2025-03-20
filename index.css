@@ -1,0 +1,76 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.intro-container {
+    background-color: #000;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px rgba(0, 162, 255, 0.7);
+}
+
+.game-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    max-width: 80%;
+    color: #ccc;
+    text-align: center;
+}
+
+.start-button {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    background: none;
+    color: white;
+    border: 2px solid #00a2ff;
+    border-radius: 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.start-button:hover {
+    background-color: #00a2ff;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 162, 255, 0.5);
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+}

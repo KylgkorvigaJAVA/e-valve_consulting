@@ -7,14 +7,13 @@ html,body {
 
 .card {
     transition: transform 0.2s ease;
-    position: relative; /* Added for absolute positioning of completed label */
+    position: relative;
 }
 
 .card:hover {
     transform: scale(1.05);
 }
 
-/* Styling for the completed label */
 .completed-label {
     position: absolute;
     top: 10px;
