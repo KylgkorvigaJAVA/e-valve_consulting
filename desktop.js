@@ -44,6 +44,10 @@ openBrowser.onclick = function () {
     }
 }
 
+closeClientModal.onclick = function () {
+    clientModal.style.display = "none";
+}
+
 closeBrowser.onclick = function () {
     browserModal.style.display = "none";
 
