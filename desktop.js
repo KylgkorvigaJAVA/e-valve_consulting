@@ -3,8 +3,7 @@ var openBrowser = document.getElementById("openBrowser");
 var closeBrowser = document.getElementById("closeBrowser");
 var clientModal = document.getElementById("clientModal");
 var closeClientModal = document.getElementById("closeClientModal");
-
-
+var completedClients = []; // Array to track completed clients
 
 openBrowser.onclick = function () {
     browserModal.style.display = "block";
@@ -17,17 +16,13 @@ closeBrowser.onclick = function () {
 window.onclick = function (event) {
     if (event.target == browserModal) {
         browserModal.style.display = "none";
+    } else if (event.target == clientModal) {
+        clientModal.style.display = "none";
     }
 }
 
 closeClientModal.onclick = function () {
     clientModal.style.display = "none";
-}
-
-window.onclick = function (event) {
-    if (event.target == clientModal) {
-        clientModal.style.display = "none";
-    }
 }
 
 var cards = document.querySelectorAll(".card");
@@ -41,6 +36,7 @@ cards.forEach(function (card) {
         var optionWrong1 = card.getAttribute("data-option-wrong1");
         var optionWrong2 = card.getAttribute("data-option-wrong2");
         var explanationText = card.getAttribute("data-explanation");
+        var clientId = card.getAttribute("id"); // Make sure each card has a unique ID
 
         document.getElementById("clientModalTitle").textContent = clientName;
 
@@ -95,7 +91,7 @@ cards.forEach(function (card) {
                         opt.style.pointerEvents = "none";
                     });
 
-                    showCorrectAnswerPopup(option.textContent, explanationText);
+                    showCorrectAnswerPopup(option.textContent, explanationText, card);
                 } else {
                     option.style.backgroundColor = "#F44336";
                     option.style.color = "white";
@@ -109,8 +105,7 @@ cards.forEach(function (card) {
     }
 });
 
-function showCorrectAnswerPopup(answerText, explanationText) {
-
+function showCorrectAnswerPopup(answerText, explanationText, clientCard) {
     var popup = document.createElement("div");
     popup.classList.add("popup");
     popup.innerHTML = `
@@ -127,7 +122,26 @@ function showCorrectAnswerPopup(answerText, explanationText) {
         popup.remove();
         clientModal.style.display = "none";
         browserModal.style.display = "block";
+        
+        // Mark the client as completed
+        markClientAsCompleted(clientCard);
     };
+}
+
+function markClientAsCompleted(clientCard) {
+    // Check if this client is already marked as completed
+    if (!clientCard.classList.contains("completed")) {
+        // Mark the card as completed
+        clientCard.classList.add("completed");
+        
+        // Add the "Tehtud" label if it doesn't exist
+        if (!clientCard.querySelector(".completed-label")) {
+            var completedLabel = document.createElement("div");
+            completedLabel.classList.add("completed-label");
+            completedLabel.textContent = "Tehtud";
+            clientCard.appendChild(completedLabel);
+        }
+    }
 }
 
 function shuffleArray(array) {

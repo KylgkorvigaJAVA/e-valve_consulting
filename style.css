@@ -1,4 +1,4 @@
-.html,body {
+html,body {
     font-family: 'Roboto', sans-serif;
     background-image: url(img/bg.png);
     background-size:cover;
@@ -7,10 +7,24 @@
 
 .card {
     transition: transform 0.2s ease;
+    position: relative; /* Added for absolute positioning of completed label */
 }
 
 .card:hover {
     transform: scale(1.05);
+}
+
+/* Styling for the completed label */
+.completed-label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    z-index: 1;
 }
 
 .note {
