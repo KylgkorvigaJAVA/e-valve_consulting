@@ -3,14 +3,22 @@ var openBrowser = document.getElementById("openBrowser");
 var closeBrowser = document.getElementById("closeBrowser");
 var clientModal = document.getElementById("clientModal");
 var closeClientModal = document.getElementById("closeClientModal");
+var taskbarBrowserIcon = document.getElementById("taskbar-browser-icon")
+
 var completedClients = []; // Array to track completed clients
 
 openBrowser.onclick = function () {
     browserModal.style.display = "block";
+
+    if (taskbarBrowserIcon.style.display !== "block") {
+        taskbarBrowserIcon.style.display = "block";
+    }
 }
 
 closeBrowser.onclick = function () {
     browserModal.style.display = "none";
+
+    taskbarBrowserIcon.style.display = "none";
 }
 
 window.onclick = function (event) {
@@ -23,6 +31,14 @@ window.onclick = function (event) {
 
 closeClientModal.onclick = function () {
     clientModal.style.display = "none";
+}
+
+window.onclick = function (event) {
+    if (event.target == clientModal) {
+        clientModal.style.display = "none";
+
+        taskbarBrowserIcon.style.display = "none";
+    }
 }
 
 var cards = document.querySelectorAll(".card");
