@@ -4,6 +4,8 @@ var closeBrowser = document.getElementById("closeBrowser");
 var clientModal = document.getElementById("clientModal");
 var closeClientModal = document.getElementById("closeClientModal");
 
+
+
 openBrowser.onclick = function () {
     browserModal.style.display = "block";
 }
@@ -38,6 +40,7 @@ cards.forEach(function (card) {
         var optionRight = card.getAttribute("data-option-right");
         var optionWrong1 = card.getAttribute("data-option-wrong1");
         var optionWrong2 = card.getAttribute("data-option-wrong2");
+        var explanationText = card.getAttribute("data-explanation");
 
         document.getElementById("clientModalTitle").textContent = clientName;
 
@@ -91,6 +94,8 @@ cards.forEach(function (card) {
                     optionsList.forEach(function (opt) {
                         opt.style.pointerEvents = "none";
                     });
+
+                    showCorrectAnswerPopup(option.textContent, explanationText);
                 } else {
                     option.style.backgroundColor = "#F44336";
                     option.style.color = "white";
@@ -103,6 +108,27 @@ cards.forEach(function (card) {
         clientModal.style.display = "block";
     }
 });
+
+function showCorrectAnswerPopup(answerText, explanationText) {
+
+    var popup = document.createElement("div");
+    popup.classList.add("popup");
+    popup.innerHTML = `
+        <div class="popup-content">
+            <h2>Õige vastus: ${answerText}</h2>
+            <p>${explanationText}</p>
+            <button id="closePopup">Järgmine klient!</button>
+        </div>
+    `;
+
+    document.body.appendChild(popup);
+
+    document.getElementById("closePopup").onclick = function () {
+        popup.remove();
+        clientModal.style.display = "none";
+        browserModal.style.display = "block";
+    };
+}
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
