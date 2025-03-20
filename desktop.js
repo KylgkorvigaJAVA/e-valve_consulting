@@ -6,35 +6,32 @@ var closeClientModal = document.getElementById("closeClientModal");
 var taskbarBrowserIcon = document.getElementById("taskbar-browser-icon")
 var computerIcon = document.getElementById("openComputer");
 var folderIcon = document.getElementById("openFolder");
+var binIcon = document.getElementById("openBin");
+var startIcon = document.getElementById("openStart");
 
 var completedClients = [];
 var totalClients = document.querySelectorAll(".card").length;
 
-computerIcon.onclick = function() {
-    showAccessDeniedMessage("Õigused puuduvad");
-}
+[computerIcon, folderIcon, binIcon, startIcon].forEach(function (icon) {
+    icon.onclick = function () {
+        showAccessDeniedMessage("Õigused puuduvad!");
+    };
+});
 
-folderIcon.onclick = function() {
-    showAccessDeniedMessage("Õigused puuduvad");
-}
-
-// Function to display the access denied message
+/* õigused puuduvad popup */
 function showAccessDeniedMessage(message) {
-    // Create a popup element
     var popup = document.createElement("div");
     popup.classList.add("popup");
     popup.innerHTML = `
         <div class="popup-content">
-            <h2>${message}</h2>
+            <h1>${message}</h1>
             <button id="closeAccessDeniedPopup">OK</button>
         </div>
     `;
 
-    // Add the popup to the body
     document.body.appendChild(popup);
 
-    // Add click event to the close button
-    document.getElementById("closeAccessDeniedPopup").onclick = function() {
+    document.getElementById("closeAccessDeniedPopup").onclick = function () {
         popup.remove();
     };
 }
@@ -212,7 +209,6 @@ function markClientAsCompleted(clientCard) {
         }
     }
 }
-
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
