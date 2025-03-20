@@ -23,18 +23,6 @@ closeBrowser.onclick = function () {
 }
 
 window.onclick = function (event) {
-    if (event.target == browserModal) {
-        browserModal.style.display = "none";
-    } else if (event.target == clientModal) {
-        clientModal.style.display = "none";
-    }
-}
-
-closeClientModal.onclick = function () {
-    clientModal.style.display = "none";
-}
-
-window.onclick = function (event) {
     if (event.target == clientModal) {
         clientModal.style.display = "none";
 
@@ -135,7 +123,7 @@ function showCorrectAnswerPopup(answerText, explanationText, clientCard, isLastC
     popup.classList.add("popup");
     popup.innerHTML = `
         <div class="popup-content">
-            <h2>Õige vastus: ${answerText}</h2>
+            <h2>Õige vastus:</h2>
             <p>${explanationText}</p>
             <button id="closePopup">Järgmine klient!</button>
         </div>
