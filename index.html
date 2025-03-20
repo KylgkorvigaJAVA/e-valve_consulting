@@ -3,60 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phish N' Chips Consulting &copy; 2025</title>
-    <link rel="stylesheet" href="style.css">
+    <title>E-Valve Consulting &copy; 2025</title>
+    <link rel="stylesheet" href="index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<body class="d-flex justify-content-center align-items-center vh-100">
-
-    <img src="img/note.png" class="note" alt="note">
-
-    <div id="loginModal" class="modal show d-block" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <h5 class="modal-title fw-bold text-center">Logige sisse</h5>
-                    <form id="loginForm">
-                        <div class="form-group">
-                            <label for="username">Kasutaja:</label>
-                            <input type="text" id="username" name="username" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Parool:</label>
-                            <input type="password" id="password" name="password" class="form-control" required>
-                        </div>
-                        <div class="d-flex justify-content-center mt-3">
-                            <button type="submit" class="btn btn-primary">Sisene</button>
-                        </div>
-                        <div id="loginError" class="text-danger mt-3 text-center" style="display:none;"></div>
-                    </form>
-                </div>
+<body>
+    <body>
+        <div class="intro-container">
+            <div class="particles" id="particles-js"></div>
+            <div class="content">
+                <h1 class="game-title">E-Valve Consulting</h1>
+                <p class="game-subtitle">Oled küberturbe konsultant ja täna on sinu esimene tööpäev. Sinu ülesanne on aidata kliente, kes seisavad silmitsi erinevate küberpettustega.</p>
+                <h2 class="game-subtitle">Jõudu tööle!</h2>
+                <button class="start-button" id="startGame" onclick="window.location.href='login.html'">Alusta</button>
             </div>
         </div>
-    </div>
-
-    <img src="img/note.png" class="note" alt="note">
-    <img src="img/icons/computer.png" id="openComputer" class="icon" alt="Computer Icon">
-    <img src="img/icons/folder.png" id="openFolder" class="icon" alt="Folder Icon">
-    <img src="img/icons/browser.png" id="openBrowser" class="icon" alt="Browser Icon">
-    <img src="img/icons/bin.png" id="openBin" class="icon" alt="Recycle Bin Icon">
-
-    <div class="taskbar">
-        <div class="taskbar-item start">
-            <img src="img/icons/start.png" alt="Start" class="taskbar-icon">
-        </div>
-        <div class="taskbar-item">
-            <img src="img/icons/folder.png" alt="Folder" class="taskbar-icon">
-        </div>
-        <div class="taskbar-item">
-            <img src="img/icons/browser.png" alt="Browser" class="taskbar-icon">
-        </div>
-        <div class="taskbar-item time">
-            <div id="time" class="text-white"></div>
-        </div>
-    </div>
-
-    <script src="index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+        <!-- particle efektid -->
+        <script>
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS("particles-js", {
+                    particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        color: { value: "#00a2ff" },
+                        opacity: { value: 0.5, random: true },
+                        size: { value: 3, random: true },
+                        line_linked: { enable: true, distance: 150, color: "#00a2ff", opacity: 0.4, width: 1 },
+                        move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+                    }
+                });
+            }
+        </script>
 </body>
 </html>
