@@ -42,7 +42,7 @@ body, html {
 }
 
 .game-info {
-    bottom:20px;
+    padding:30px;
     color: #ccc;
 }
 
