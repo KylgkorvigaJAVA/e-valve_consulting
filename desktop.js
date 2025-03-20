@@ -6,6 +6,7 @@ var closeClientModal = document.getElementById("closeClientModal");
 var taskbarBrowserIcon = document.getElementById("taskbar-browser-icon")
 
 var completedClients = [];
+var totalClients = document.querySelectorAll(".card").length;
 
 openBrowser.onclick = function () {
     browserModal.style.display = "block";
@@ -109,7 +110,12 @@ cards.forEach(function (card) {
                         opt.style.pointerEvents = "none";
                     });
 
-                    showCorrectAnswerPopup(option.textContent, explanationText, card);
+                    markClientAsCompleted(card);
+
+                    var isLastClient = completedClients.length === totalClients;
+
+                    showCorrectAnswerPopup(option.textContent, explanationText, card, isLastClient);
+
                 } else {
                     option.style.backgroundColor = "#F44336";
                     option.style.color = "white";
@@ -124,7 +130,7 @@ cards.forEach(function (card) {
 });
 
 /* õige vastus popup */
-function showCorrectAnswerPopup(answerText, explanationText, clientCard) {
+function showCorrectAnswerPopup(answerText, explanationText, clientCard, isLastClient) {
     var popup = document.createElement("div");
     popup.classList.add("popup");
     popup.innerHTML = `
@@ -140,9 +146,32 @@ function showCorrectAnswerPopup(answerText, explanationText, clientCard) {
     document.getElementById("closePopup").onclick = function () {
         popup.remove();
         clientModal.style.display = "none";
-        browserModal.style.display = "block";
 
-        markClientAsCompleted(clientCard);
+        if (isLastClient) {
+            showCompletionPopup();
+        } else {
+            browserModal.style.display = "block";
+
+        }
+    };
+}
+
+/* kõikide klientide lahendamise popup */
+function showCompletionPopup() {
+    var popup = document.createElement("div");
+    popup.classList.add("popup");
+    popup.innerHTML = `
+        <div class="popup-content">
+            <h2>Tubli!</h2>
+            <p>Oled lahendanud kõik probleemid ja aidanud kõiki kliente! Sinu tööpäev on tänaseks läbi!</p>
+            <button id="closeCompletionPopup">Sulge</button>
+        </div>
+    `;
+
+    document.body.appendChild(popup);
+
+    document.getElementById("closeCompletionPopup").onclick = function () {
+        popup.remove();
     };
 }
 
@@ -156,6 +185,11 @@ function markClientAsCompleted(clientCard) {
             completedLabel.classList.add("completed-label");
             completedLabel.textContent = "Tehtud";
             clientCard.appendChild(completedLabel);
+        }
+
+        var clientName = clientCard.getAttribute("data-client");
+        if (!completedClients.includes(clientName)) {
+            completedClients.push(clientName);
         }
     }
 }
